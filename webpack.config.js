@@ -15,6 +15,12 @@ const common = {
 	entry: {
 		app: PATHS.app
 	},
+	// add resolve.extensions.
+	// '' is needed to allow imports without an extension.
+	// Note the .'s before the exetnesions as it will fail to match without!!!!
+	resolve: {
+		extensions: ['', '.js', '.jsx']
+	},
 	output: {
 		path: PATHS.build,
 		filename: 'bundle.js'
