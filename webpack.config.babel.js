@@ -1,3 +1,10 @@
+// As resolve.extensions gets evaluated from left to right, we can use it to control which 
+// code gets loaded for given configuration. For instance, you could have .web.js to define web 
+// specific parts and then have something like ['', '.web.js', '.js', '.jsx']. If a "web" version 
+// of the file is found, Webpack would use that instead of the default.
+
+
+
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -33,6 +40,17 @@ const common = {
 				loaders: ['style', 'css'],
 				// Include accepts either a path or an array of paths.
 				include: PATHS.app 
+			},
+			{
+				//Setup jsx. Accepts js too because of regex
+				test: /\.jsx?$/,
+				// Enable caching for improved performance during development
+				// It uses default OS directory by default. If you need something
+				// more custom, pass a path to it. ie., babel?cacheDirectory=<path>
+				loaders: ['babel?cacheDirectory'],
+				// Parse only app files! Without this it will go through the entire project.
+				// In addition to being slow, that will most likely jack shit up. 
+				include: PATHS.app
 			}
 		]
 	}

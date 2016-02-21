@@ -1,3 +1,6 @@
 node_modules
 build
 tmp.js
+app/index.js.og
+app/component.js.og
+*.log
