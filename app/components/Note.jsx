@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default () => <div>SlutSlayer</div>;
+export default () => <div>'Dick gravy in your mama's pudding hatch'</div>;
