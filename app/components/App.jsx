@@ -3,18 +3,18 @@ import React from 'react';
 import Notes from './Notes.jsx';
 
 export default class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-		  notes: [
-  			{
+      notes: [
+        {
           id: uuid.v4(),
-          task: 'Git gud'
+          task: 'Change diaper'
         },
         {
           id: uuid.v4(),
-          task: 'Taco Bell'
+          task: 'Eat Taco Bell'
         },
         {
           id: uuid.v4(),
@@ -23,7 +23,7 @@ export default class App extends React.Component {
       ]
     };
   }
-  render(){
+  render() {
     const notes = this.state.notes;
 
     return (
@@ -34,21 +34,15 @@ export default class App extends React.Component {
           onDelete={this.deleteNote} />
       </div>
     );
-	}
+  }
   deleteNote = (id, e) => {
-  // Avoid bubbling to edit
+    // Avoid bubbling to edit
     e.stopPropagation();
 
     this.setState({
       notes: this.state.notes.filter(note => note.id !== id)
     });
   };
-
-  // experimental feature = property initializer
-  // It allows teh bind method 'this' to point
-  // at our *App* instance
-  // Could bind at constructor using a ling such as
-  // this.addNote = this.addNote.bind(this);
   addNote = () => {
     this.setState({
       notes: this.state.notes.concat([{
@@ -57,15 +51,14 @@ export default class App extends React.Component {
       }])
     });
   };
-
   editNote = (id, task) => {
     // Don't modify if trying set an empty value
-    if(!task.trim()){
+    if(!task.trim()) {
       return;
     }
 
     const notes = this.state.notes.map(note => {
-      if(note.id === id && task){
+      if(note.id === id && task) {
         note.task = task;
       }
 
