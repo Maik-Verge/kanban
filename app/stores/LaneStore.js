@@ -1,6 +1,5 @@
 import uuid from 'node-uuid';
 import alt from '../libs/alt';
-
 import LaneActions from '../actions/LaneActions';
 
 class LaneStore {
@@ -18,6 +17,33 @@ class LaneStore {
     this.setState({
       lanes: lanes.concat(lane)
     });
+  }
+  attachToLane({laneId, noteId}) {
+    const lanes = this.lanes.map(lane => {
+      if(lane.id === laneId) {
+        if(lane.notes.includes(noteId)) {
+          console.warn('Already attached not to lane', lanes);
+        }
+        else {
+          lane.notes.push(noteId);
+        }
+      }
+
+      return lane;
+    });
+
+    this.setState({lanes});
+  }
+  detachFromLane({laneId, noteId}) {
+    const lanes = this.lanes.map(lane => {
+      if(lane.id === laneId) {
+        lane.notes = lane.notes.filter(note => note !== noteId);
+      }
+
+      return lane;
+    });
+
+    this.setState({lanes});
   }
 }
 
