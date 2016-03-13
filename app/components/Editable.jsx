@@ -1,9 +1,3 @@
-// This setup uses an uncontrolled design with its input. The control
-// over state is handed over to the dom and captured through event handlers
-// If I want to validate the input when the user is typing, it would be
-// useful to conert it into a controlled deisgn. in this case you define
-// a onChange handler and a value prop
-
 import React from 'react';
 
 export default class Editable extends React.Component {
@@ -26,11 +20,6 @@ export default class Editable extends React.Component {
       onBlur={this.finishEdit}
       onKeyPress={this.checkEnter} />;
   };
-  renderDelete = () => {
-    return <button
-      className="delete"
-      onClick={this.props.onDelete}>x</button>;
-  };
   renderValue = () => {
     const onDelete = this.props.onDelete;
 
@@ -40,6 +29,11 @@ export default class Editable extends React.Component {
         {onDelete ? this.renderDelete() : null }
       </div>
     );
+  };
+  renderDelete = () => {
+    return <button
+      className="delete"
+      onClick={this.props.onDelete}>x</button>;
   };
   checkEnter = (e) => {
     if(e.key === 'Enter') {
