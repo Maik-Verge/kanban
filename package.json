@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "stats": "webpack --profile --json > stats.json",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +19,11 @@
     "babel-preset-react-hmre": "^1.1.0",
     "babel-preset-survivejs-kanban": "^0.3.3",
     "babel-register": "^6.5.2",
+    "clean-webpack-plugin": "^0.1.8",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.16.0",
+    "html-webpack-template": "^4.0.0",
     "jshint": "^2.9.1",
     "jshint-loader": "^0.8.3",
     "npm-install-webpack-plugin": "^2.0.2",
